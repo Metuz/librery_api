@@ -9,6 +9,9 @@ gem "puma", ">= 5.0"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+gem 'devise'
+gem 'devise-jwt'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug'

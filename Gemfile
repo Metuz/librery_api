@@ -1,18 +1,19 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.3"
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
+gem 'rails', '~> 7.2.3'
 # Use postgresql as the database for Active Record
-gem "pg", "~> 1.1"
+gem 'pg', '~> 1.1'
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", ">= 5.0"
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem 'puma', '>= 5.0'
+gem 'tzinfo-data', platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem 'bootsnap', require: false
 gem 'devise'
 gem 'devise-jwt'
 gem 'rack-cors'
 gem 'faker'
+gem 'jsonapi-serializer'
 
 group :development, :test do
   gem 'byebug'

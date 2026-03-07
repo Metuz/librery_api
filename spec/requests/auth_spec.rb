@@ -28,7 +28,7 @@ RSpec.describe 'Auth', type: :request do
       post '/api/login', params: { email: user.email, password: user.password }
 
       token = JSON.parse(response.body)['token']
-      post '/api/logout', headers: { 'Authorization' => 'Bearer #{token}' }
+      post '/api/logout', headers: { 'Authorization' => "Bearer #{token}" }
 
       expect(response).to have_http_status(:ok)
       expect(JSON.parse(response.body)['message']).to eq('Logged out successfully')

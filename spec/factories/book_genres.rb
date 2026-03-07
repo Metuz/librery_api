@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :book_genre do
-    book { nil }
-    genre { nil }
+    book { create(:book) }
+    genre { create(:genre) }
   end
 end

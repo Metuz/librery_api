@@ -4,6 +4,8 @@ class User < ApplicationRecord
          :jwt_authenticatable,
          jwt_revocation_strategy: JwtDenylist
 
+  has_many :borrowings
+
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, if: -> { password.present? }

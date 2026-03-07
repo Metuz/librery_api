@@ -6,4 +6,5 @@ RSpec.describe Author, type: :model do
   subject { author }
 
   it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to have_many(:books) }
 end

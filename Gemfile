@@ -12,6 +12,7 @@ gem "bootsnap", require: false
 gem 'devise'
 gem 'devise-jwt'
 gem 'rack-cors'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'

@@ -14,6 +14,7 @@ gem 'devise-jwt'
 gem 'rack-cors'
 gem 'faker'
 gem 'jsonapi-serializer'
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug'

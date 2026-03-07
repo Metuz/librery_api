@@ -6,6 +6,11 @@ class Borrowing < ApplicationRecord
   validate :book_available, :same_book_borrowed_by_user, on: :create
   before_create :set_due_date
 
+  def return
+    self.returned_at = Date.today
+    save
+  end
+
   private
 
   def book_available

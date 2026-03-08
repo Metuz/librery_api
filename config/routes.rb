@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     resources :books, only: [:index, :create, :update, :destroy]
     resources :authors, only: [:index]
+    resources :genres, only: [:index]
     resources :borrowings, only: [:create] do
       patch '/return', on: :member, to: 'borrowings#return_book'
     end

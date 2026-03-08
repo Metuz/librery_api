@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     post '/logout', to: 'auth#logout'
 
     resources :books, only: [:index, :create, :update, :destroy]
+    resources :authors, only: [:index]
     resources :borrowings, only: [:create] do
       patch '/return', on: :member, to: 'borrowings#return_book'
     end

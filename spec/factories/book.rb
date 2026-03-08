@@ -1,8 +1,10 @@
 FactoryBot.define do
   factory :book do
     title        { Faker::Book.title }
-    isbn         { Faker::Code.isbn }
     author       { create(:author) }
+    sequence(:isbn) do |n|
+      "1232#{n}"
+    end
 
     after(:create) do |book|
       genre = create(:genre)

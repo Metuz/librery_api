@@ -11,4 +11,12 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, if: -> { password.present? }
 
   enum role: { librarian: 0, member: 1 }
+
+  scope :members_with_overdue_borrowings, -> {
+    joins(:borrowings)
+      .where('borrowings.due_date < ? AND borrowings.returned_at IS NULL', Date.today)
+      .where(role: :member)
+      .distinct
+      .select('users.name, users.id')
+  }
 end

@@ -6,6 +6,26 @@ class Borrowing < ApplicationRecord
   validate :book_available, :same_book_borrowed_by_user, on: :create
   before_create :set_due_date
 
+  scope :librarian_dashboard, lambda {
+    result = find_by_sql([
+      'SELECT COUNT(DISTINCT id) AS total_books_borrowed,
+              COUNT(*) FILTER (WHERE returned_at IS NULL AND due_date < ?) AS overdue_books
+      FROM borrowings',
+      Date.today
+    ]).first
+
+    {
+      total_books_borrowed: result.total_books_borrowed,
+      overdue_books: result.overdue_books
+    }
+  }
+
+  scope :member_dashboard, ->(user_id) {
+    joins(:book).
+      where(user_id: user_id).
+      select('borrowings.*, books.title AS book_title')
+  }
+
   def return
     self.returned_at = Date.today
     save

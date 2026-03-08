@@ -50,4 +50,23 @@ RSpec.describe User, type: :model do
       expect(strategy).to eq(JwtDenylist)
     end
   end
+
+  describe '#members_with_overdue_borrowings' do
+    let!(:book)                   { create(:book, total_copies: 2) }
+    let!(:member_with_overdue)    { create(:user, role: :member) }
+    let!(:member_without_overdue) { create(:user, role: :member) }
+
+    before do
+      create(:borrowing, book: book, user: member_with_overdue, borrowed_at: 1.month.ago)
+      create(:borrowing, book: book, user: member_without_overdue, borrowed_at: 2.weeks.ago, returned_at: 1.week.ago)
+    end
+
+    subject { User.members_with_overdue_borrowings }
+
+    it 'returns members with overdue borrowings' do
+      result = subject
+      expect(result).to include(member_with_overdue)
+      expect(result).not_to include(member_without_overdue)
+    end
+  end
 end

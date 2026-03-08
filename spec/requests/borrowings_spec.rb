@@ -9,7 +9,6 @@ RSpec.describe 'Borrowing', type: :request do
     let(:attrs) do
       {
         borrowing: {
-          user_id: user.id,
           book_id: book.id,
           borrowed_at: Date.today
         }

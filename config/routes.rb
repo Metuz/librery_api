@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :borrowings, only: [:create] do
       patch '/return', on: :member, to: 'borrowings#return_book'
     end
+    get '/dashboard', to: 'dashboard#index'
   end
 end

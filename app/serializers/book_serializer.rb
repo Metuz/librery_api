@@ -6,6 +6,6 @@ class BookSerializer < BaseSerializer
   end
 
   attribute :genres do |object|
-    object.genres.map(&:name)
+    object.genres.map(&:id)
   end
 end

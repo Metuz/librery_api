@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   has_many   :borrowings
 
   validates :title, :isbn, presence: true
-  validates :isbn, uniqueness: { case_sensitive: false }
+  validates :isbn, uniqueness: true
   validates :total_copies, numericality: { only_integer: true }
 
   before_destroy :check_borrowings

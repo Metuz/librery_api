@@ -173,7 +173,7 @@ Content-Type: application/json
 {
   borrowing: {
     book_id: book.id,
-    borrowed_at: Date.today
+    borrowed_at: '20/01/2026'
   }
 }
 ```

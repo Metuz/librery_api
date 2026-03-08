@@ -1,27 +1,27 @@
-# Library API
+# Librery API
 
-A RESTful API for library management built with Ruby on Rails. It allows you to manage books, authors, borrowings, users and provides a complete library system with JWT authentication.
+A RESTful API for library management built with Ruby on Rails. Manage books, authors, genres, borrowings, and users with JWT authentication.
 
 ## 🚀 Features
 
-- **JWT Authentication**: Secure login/logout system with JWT tokens
-- **Book Management**: Full CRUD for books with authors and genres
-- **Borrowing System**: Create borrowings and return books
+- **JWT Authentication**: Secure login/logout with JWT tokens
+- **Book Management**: Full CRUD for books, authors, and genres
+- **Borrowing System**: Create and return borrowings
 - **Dashboard**: Overview of library status
-- **User Roles**: Permission system with members and librarians
-- **RESTful API**: Well-designed endpoints following REST standards
-- **JSON:API Serialization**: Consistent responses using JSON:API standard
-- **Authorization**: Role-based access control with Pundit
+- **User Roles**: Members and librarians with permissions
+- **RESTful API**: Standard endpoints
+- **JSON:API Serialization**: Consistent responses
+- **Authorization**: Role-based access with Pundit
 
 ## 🛠 Technologies
 
-- **Ruby on Rails 7.2.3**: Web framework
-- **PostgreSQL**: Database
-- **Devise + JWT**: Authentication
-- **Pundit**: Authorization
-- **JSONAPI-Serializer**: Response serialization
-- **Rack-CORS**: CORS handling
-- **RSpec**: Testing
+- Ruby on Rails 7.2.3
+- PostgreSQL
+- Devise + JWT
+- Pundit
+- JSONAPI-Serializer
+- Rack-CORS
+- RSpec
 
 ## 📋 System Requirements
 
@@ -31,32 +31,52 @@ A RESTful API for library management built with Ruby on Rails. It allows you to 
 
 ## 🚀 Installation
 
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd librery_api
-   ```
+1. Clone the repository:
+  ```bash
+  git clone <repository-url>
+  cd librery_api
+  ```
+2. Install dependencies:
+  ```bash
+  bundle install
+  ```
+3. Create and migrate the database:
+  ```bash
+  rails db:create
+  rails db:migrate
+  ```
+4. Seed sample data:
+  ```bash
+  rails db:seed
+  ```
+5. Start the server:
+  ```bash
+  rails server
+  ```
 
-2. **Install dependencies:**
-   ```bash
-   bundle install
-   ```
+## 🔗 Main Endpoints
 
-3. **Create and migrate the database:**
-   ```bash
-   rails db:create
-   rails db:migrate
-   ```
+- `POST /api/login` — Login, returns JWT token
+- `POST /api/logout` — Logout
+- `GET /api/dashboard` — Library status overview
+- `GET /api/books` — List books
+- `PATCH /api/books/:id` — Edit book
+- `GET /api/authors` — List authors
+- `GET /api/genres` — List genres
+- `POST /api/borrowings` — Create borrowing
+- `PATCH /api/borrowings/:id/return` — Return book
 
-4. **Seed sample data:**
-   ```bash
-   rails db:seed
-   ```
+## 🧩 Integration
+The frontend (librery_client) consumes these endpoints via Axios. Send the JWT token in the Authorization header.
 
-5. **Start the server:**
-   ```bash
-   rails server
-   ```
+## 📝 Example Usage
+```bash
+curl -X POST http://localhost:3000/api/login -d '{"email":"user@example.com","password":"secret"}'
+curl -H "Authorization: Bearer <token>" http://localhost:3000/api/books
+```
+
+## 🛠 Customization
+You can add endpoints, modify serializers and policies in `/app`.
 
 The API will be available at `http://localhost:3000`
 

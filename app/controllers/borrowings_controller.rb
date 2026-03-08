@@ -1,5 +1,5 @@
 class BorrowingsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :return_book, :by_user]
+  before_action :authenticate_user!, only: [:create, :return_book]
 
   def create
     borrowing = Borrowing.new(borrowing_params)

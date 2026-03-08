@@ -46,10 +46,12 @@ RSpec.describe "Dashboards", type: :request do
           {
             'borrowed_books' => [
               {
+                'id' => borrowing.id,
                 'title' => book.title,
                 'borrowed_at' => borrowing.borrowed_at.strftime('%Y-%m-%d'),
                 'due_date' => borrowing.due_date.strftime('%Y-%m-%d'),
-                'overdue' => true
+                'on_time' => nil,
+                'returned' => false
               }
             ]
           }

@@ -2,7 +2,7 @@ class Api::BooksController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   def index
-    books = Book.includes(:genres).all
+    books = Book.includes(:genres, :author).all
     render json: BookSerializer.new(books).serializable_hash
   end
 

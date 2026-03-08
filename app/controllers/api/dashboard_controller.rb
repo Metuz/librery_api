@@ -28,11 +28,14 @@ class Api::DashboardController < ApplicationController
     borrowings = Borrowing.member_dashboard(current_user.id)
     {
       borrowed_books: borrowings.map do |borrowing|
+        on_time = borrowing.due_date.after?(Date.today) if borrowing.returned_at.present?
         {
+          id: borrowing.id,
           title: borrowing.book_title,
           borrowed_at: borrowing.borrowed_at,
           due_date: borrowing.due_date,
-          overdue: borrowing.due_date < Date.today
+          returned: borrowing.returned_at.present?,
+          on_time: on_time
         }
       end
     }

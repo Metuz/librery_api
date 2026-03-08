@@ -1,5 +1,11 @@
 class BookSerializer < BaseSerializer
-  attributes :id, :title, :author 
+  attributes :id, :title, :isbn
 
-  has_many :genres
+  attribute :author_name do |object|
+    object.author.name
+  end
+
+  attribute :genres do |object|
+    object.genres.map(&:name)
+  end
 end

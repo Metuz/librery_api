@@ -18,7 +18,7 @@ gem 'pundit'
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails', '~> 8.0.0'
+  gem 'rspec-rails', '~> 8.0.4'
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
 end
